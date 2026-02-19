@@ -27,7 +27,7 @@
                         <span class="menu-icon">
                             <i class="fa fa-university"></i>
                         </span>
-                        <span class="menu-title text-white">SEGUIMIENTO</span>
+                        <span class="menu-title text-white">Administracion</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <!--end:Menu link-->
@@ -35,11 +35,11 @@
 
                         <!-- Reporte Procesos -->
                         <div class="menu-item">
-                            <a class="menu-link" href="#">
+                            <a class="menu-link" href="{{ route('rol.listado') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title text-white">Lista Notas Recepcion</span>
+                                <span class="menu-title text-white">Roles</span>
                             </a>
                         </div>
 

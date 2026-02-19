@@ -10,7 +10,7 @@ class Rol extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'roles';
+    protected $table = "roles";
 
     protected $fillable = [
         'usuario_creador_id',
