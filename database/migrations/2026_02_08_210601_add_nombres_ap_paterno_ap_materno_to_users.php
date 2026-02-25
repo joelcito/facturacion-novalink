@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('usuario_creador_id')->nullable()->after('id');
-            $table->foreign('usuario_creador_id')->references('id')->on('users');
+            $table->unsignedBigInteger('usuario_creador_id')->nullable()->after('idusers');
+            $table->foreign('usuario_creador_id')->references('idusers')->on('users');
             $table->unsignedBigInteger('usuario_modificador_id')->nullable()->after('usuario_creador_id');
-            $table->foreign('usuario_modificador_id')->references('id')->on('users');
+            $table->foreign('usuario_modificador_id')->references('idusers')->on('users');
             $table->unsignedBigInteger('usuario_eliminador_id')->nullable()->after('usuario_modificador_id');
-            $table->foreign('usuario_eliminador_id')->references('id')->on('users');
+            $table->foreign('usuario_eliminador_id')->references('idusers')->on('users');
 
-            $table->unsignedBigInteger('rol_id')->nullable()->after('usuario_modificador_id');
-            $table->foreign('rol_id')->references('id')->on('roles');
+            $table->unsignedBigInteger('rol_idroles')->nullable()->after('usuario_modificador_id');
+            $table->foreign('rol_idroles')->references('idroles')->on('roles');
 
             $table->string('nombre')->nullable()->after('email');
             $table->string('ap_paterno')->nullable()->after('nombre');
@@ -44,8 +44,8 @@ return new class extends Migration
             $table->dropColumn('usuario_modificador_id');
             $table->dropForeign(['usuario_eliminador_id']);
             $table->dropColumn('usuario_eliminador_id');
-            $table->dropForeign(['rol_id']);
-            $table->dropColumn('rol_id');
+            $table->dropForeign(['rol_idroles']);
+            $table->dropColumn('rol_idroles');
 
             $table->dropColumn('nombre');
             $table->dropColumn('ap_paterno');

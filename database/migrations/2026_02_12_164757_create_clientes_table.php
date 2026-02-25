@@ -12,15 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->id('idclientes');
-            $table->foreign('usuario_creador_id')->references('id')->on('users');
-            $table->unsignedBigInteger('usuario_creador_id')->nullable();
-            $table->foreign('usuario_modificador_id')->references('id')->on('users');
-            $table->unsignedBigInteger('usuario_modificador_id')->nullable();
-            $table->foreign('usuario_eliminador_id')->references('id')->on('users');
-            $table->unsignedBigInteger('usuario_eliminador_id')->nullable();
-            $table->unsignedBigInteger('empresas_idempresas')->after('id');
-            // Clave foránea (si tienes tabla empresas)
+            $table->id('idclientes')->primary();
+                       
+            $table->unsignedBigInteger('empresas_idempresas')->after('idclientes');
             $table->foreign('empresas_idempresas')->references('idempresas')->on('empresas');
             $table->string('nombres', 45);
             $table->string('ap_paterno', 45);
@@ -28,10 +22,20 @@ return new class extends Migration
             $table->string('cedula', 45)->nullable();
             $table->string('complemento', 45)->nullable();
             $table->string('nit', 45)->nullable();
-            $table->string('razon_social', 45)->nullable();
+            $table->Text('razon_social')->nullable();
             $table->string('correo', 45)->nullable();
             $table->string('numero_celular', 45)->nullable();
             $table->string('estado', 45)->nullable();
+           
+            $table->unsignedBigInteger('usuario_creador_id');
+            $table->foreign('usuario_creador_id')->references('idusers')->on('users');
+            $table->unsignedBigInteger('usuario_modificador_id')->nullable()->after('usuario_creador_id');
+            $table->foreign('usuario_modificador_id')->references('idusers')->on('users');
+            $table->unsignedBigInteger('usuario_eliminador_id')->nullable()->after('usuario_modificador_id');
+            $table->foreign('usuario_eliminador_id')->references('idusers')->on('users');
+            $table->integer('created_at');
+            $table->dateTime('modified_at')->nullable();
+            $table->dateTime('deleted_at')->nullable();
     
            
         });

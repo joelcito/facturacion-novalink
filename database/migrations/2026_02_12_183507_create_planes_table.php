@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('planes', function (Blueprint $table) {
             $table->id('idplanes');
+
             $table->decimal('precio', 12, 2);
             $table->string('nombre', 45);
             $table->string('tipo_plan', 45);
@@ -22,7 +23,17 @@ return new class extends Migration
             $table->decimal('cantidad_usuario', 12, 2);
             $table->decimal('cantidad_producto', 12, 2);
             $table->decimal('cantidad_cliente', 12, 2);
-            $table->timestamps();
+            $table->string('estado', 45)->nullable();
+            
+            $table->unsignedBigInteger('usuario_creador_id');
+            $table->foreign('usuario_creador_id')->references('idusers')->on('users');
+            $table->unsignedBigInteger('usuario_modificador_id')->nullable()->after('usuario_creador_id');
+            $table->foreign('usuario_modificador_id')->references('idusers')->on('users');
+            $table->unsignedBigInteger('usuario_eliminador_id')->nullable()->after('usuario_modificador_id');
+            $table->foreign('usuario_eliminador_id')->references('idusers')->on('users');
+            $table->integer('created_at');
+            $table->dateTime('updated_at')->nullable();
+            $table->dateTime('deleted_at')->nullable();
         });
     }
 

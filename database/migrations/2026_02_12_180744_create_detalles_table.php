@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('detalles', function (Blueprint $table) {
-            $table->id('iddetalles');
+            $table->id('iddetalles')->primary();
 
             $table->unsignedBigInteger('empresas_idempresas');
             $table->unsignedBigInteger('sucursales_idsucursales');
@@ -31,22 +31,22 @@ return new class extends Migration
             $table->decimal('importe', 12, 2)->default(0);
             $table->datetime('fecha');
             $table->string('detallescol',45);
-            
-            $table->foreign('facturas_idfacturas')
-                ->references('idfacturas')
-                ->on('facturas');
+            $table->string('estado',45);
 
-            $table->foreign('servicios_idservicios')
-                ->references('idservicios')
-                ->on('servicios');
+            $table->unsignedBigInteger('usuario_creador_id');
+            $table->foreign('usuario_creador_id')->references('idusers')->on('users');
+            $table->unsignedBigInteger('usuario_modificador_id')->nullable()->after('usuario_creador_id');
+            $table->foreign('usuario_modificador_id')->references('idusers')->on('users');
+            $table->unsignedBigInteger('usuario_eliminador_id')->nullable()->after('usuario_modificador_id');
+            $table->foreign('usuario_eliminador_id')->references('idusers')->on('users');
+            $table->integer('created_at');
+            $table->dateTime('updated_at')->nullable();
+            $table->dateTime('deleted_at')->nullable();
             
-            $table->foreign('clientes_idclientes')
-                ->references('idclientes')
-                ->on('clientes');
-
-            $table->foreign('punto_ventas_idpuntoventas')
-                ->references('idpuntoventas')
-                ->on('punto_ventas');
+            $table->foreign('facturas_idfacturas')->references('idfacturas')->on('facturas');
+            $table->foreign('servicios_idservicios')->references('idservicios')->on('servicios');            
+            $table->foreign('clientes_idclientes')->references('idclientes')->on('clientes');             
+            $table->foreign('punto_ventas_idpuntoventas')->references('idpuntoventas')->on('punto_ventas');
             $table->foreign('sucursales_idsucursales')->references('idsucursales')->on('sucursales');
         });
     }

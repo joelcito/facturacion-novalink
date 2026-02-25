@@ -13,24 +13,30 @@ return new class extends Migration
     {
         Schema::create('suscripciones', function (Blueprint $table) {
             $table->id('idsuscripciones');
+            
+            $table->unsignedBigInteger('empresas_idempresas'); // relación con Empresa
+            $table->unsignedBigInteger('planes_idplanes'); // relación con Plan
 
-        $table->unsignedBigInteger('planes_idplanes'); // relación con Plan
-        $table->unsignedBigInteger('empresas_idempresas'); // relación con Empresa
-        $table->date('fecha_inicio');
-        $table->date('fecha_fin')->nullable();
-        $table->string('estado', 45)->default('activa'); // activa, vencida, cancelada
-        $table->timestamps();
+            $table->date('fecha_inicio');
+            $table->date('ampliacion_cantidad_facturas')->nullable();
+            $table->date('fecha_fin')->nullable();
+            $table->date('descripcion')->nullable();
+            $table->string('estado', 45)->default('activa'); // activa, vencida, cancelada
+            
+            $table->unsignedBigInteger('usuario_creador_id');
+            $table->foreign('usuario_creador_id')->references('idusers')->on('users');
+            $table->unsignedBigInteger('usuario_modificador_id')->nullable()->after('usuario_creador_id');
+            $table->foreign('usuario_modificador_id')->references('idusers')->on('users');
+            $table->unsignedBigInteger('usuario_eliminador_id')->nullable()->after('usuario_modificador_id');
+            $table->foreign('usuario_eliminador_id')->references('idusers')->on('users');
+            $table->integer('created_at');
+            $table->dateTime('updated_at')->nullable();
+            $table->dateTime('deleted_at')->nullable();
 
         // Relaciones
-        $table->foreign('planes_idplanes')
-              ->references('idplanes')
-              ->on('planes')
-              ->onDelete('cascade');
-
-        $table->foreign('empresas_idempresas')
-              ->references('idempresas')
-              ->on('empresas')
-              ->onDelete('cascade');
+         $table->foreign('empresas_idempresas')->references('idempresas')->on('empresas');
+         $table->foreign('planes_idplanes')->references('idplanes')->on('planes');
+        
         });
     }
 
