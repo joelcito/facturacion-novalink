@@ -42,7 +42,38 @@
                                 <span class="menu-title text-white">Roles</span>
                             </a>
                         </div>
-
+                         <div class="menu-item">
+                            <a class="menu-link" href="{{ route('empresa.listado') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title text-white">Empresas</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{ route('sucursal.listado') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title text-white">Sucursales</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{ route('plan.listado') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title text-white">Planes</span>
+                            </a>
+                        </div>
+                         <div class="menu-item">
+                            <a class="menu-link" href="{{ route('suscripcion.listado') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title text-white">Suscripciones</span>
+                            </a>
+                        </div>
                         <!-- NUEVO: Stock Histórico -->
                         {{-- <div class="menu-item">
                             <a class="menu-link" href="{{ route('reporte.stock.formulario') }}">

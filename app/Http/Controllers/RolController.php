@@ -37,10 +37,10 @@ class RolController extends Controller
 
         if($request->ajax()){
 
-            // dd($request->all());
-
+            
             $rol_id  = $request->input('id');
             $nombre  = $request->input('nombre');
+            $descripcion  = $request->input('descripcion');
             $usuario = Auth::user();
 
             if($rol_id == '0'){
@@ -65,8 +65,6 @@ class RolController extends Controller
     public function  eliminarRol(Request $request){
 
         if($request->ajax()){
-
-            // dd($request->all());
 
             $rol_id  = $request->input('rol');
             $usuario = Auth::user();

@@ -17,7 +17,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header" id="kt_modal_add_user_header">
-                    <h3 class="fw-bold">FORMULARIO DE ROL <span class="text-info" id="nombre_busqueda"></span></h3>
+                    <h3 class="fw-bold">NUEVO ROL <span class="text-info" id="nombre_busqueda"></span></h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body scroll-y">
@@ -29,6 +29,11 @@
                                     <label class="required fw-semibold fs-6 mb-2">Nombre</label>
                                     <input type="text" class="form-control form-control-sm" id="nombre"
                                         name="nombre">
+                                </div>
+                                <div class="fv-row mb-7">
+                                    <label class="required fw-semibold fs-6 mb-2">Descripción</label>
+                                    <input type="text" class="form-control form-control-sm" id="descripcion"
+                                        name="descripcion">
                                 </div>
                             </div>
                         </div>
@@ -112,6 +117,7 @@
 
         function modalNuevoRol(){
             $('#nombre').val('')
+            $('#descripcion').val('')
             $('#id').val(0)
             $('#modalRol').modal('show')
         }
@@ -164,6 +170,7 @@
         function editarRol(rol){
 
             $('#nombre').val(rol.nombre)
+            $('#descripcion').val(rol.descripcion)
             $('#id').val(rol.id)
             $('#modalRol').modal('show')
 

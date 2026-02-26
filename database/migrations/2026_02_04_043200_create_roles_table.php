@@ -26,8 +26,7 @@ return new class extends Migration
             $table->string('estado')->nullable();
             $table->integer('created_at');
             $table->dateTime('updated_at')->nullable();
-            $table->dateTime('deleted_at')->nullable();
-            $table->timestamps();
+            $table->dateTime('deleted_at')->nullable();            
         });
     }
 

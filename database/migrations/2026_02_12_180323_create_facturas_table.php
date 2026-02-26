@@ -19,7 +19,7 @@ return new class extends Migration
         $table->unsignedBigInteger('empresas_idempresas');
         $table->unsignedBigInteger('sucursales_idsucursales');
         $table->unsignedBigInteger('punto_ventas_idpuntoventas')->nullable();
-        $table->unisgnedBigInteger('cufds_idcufds');
+        $table->unsignedBigInteger('cufds_idcufds');
         $table->unsignedBigInteger('motivo_anulaciones_idmotivo_anulaciones');
         $table->unsignedBigInteger('tipo_documento_identidades_idtipo_documento_identidades');
 
@@ -58,7 +58,7 @@ return new class extends Migration
         $table->foreign('empresas_idempresas')->references('idempresas')->on('empresas');
         $table->foreign('sucursales_idsucursales')->references('idsucursales')->on('sucursales');
         $table->foreign('punto_ventas_idpuntoventas')->references('idpuntoventas')->on('punto_ventas');
-        $table->foreign('cufds_idcufds')->references('idcufds')->on('cufds');
+        $table->foreign('cufds_idcufds')->references('idcufds')->on('CUFDS');
         $table->foreign('motivo_anulaciones_idmotivo_anulaciones')->references('idmotivo_anulaciones')->on('motivo_anulaciones');
         $table->foreign('tipo_documento_identidades_idtipo_documento_identidades')->references('idtipo_documento_identidades')->on('tipo_documento_identidades');
         });

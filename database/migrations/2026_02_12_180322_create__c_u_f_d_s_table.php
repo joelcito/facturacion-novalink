@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('empresas_idempresas');
             $table->unsignedBigInteger('sucursales_idsucursales');
             $table->unsignedBigInteger('punto_ventas_idpuntoventas')->nullable();
-            $table->unsignedBigInteger('cuids_idcuids');
+            $table->unsignedBigInteger('cuis_idcuis');
 
             $table->string('codigo_ambiente',45);
             $table->string('codigo',45);            
@@ -42,7 +42,7 @@ return new class extends Migration
             $table->foreign('empresas_idempresas')->references('idempresas')->on('empresas');            
             $table->foreign('sucursales_idsucursales')->references('idsucursales')->on('sucursales');
             $table->foreign('punto_ventas_idpuntoventas')->references('idpuntoventas')->on('punto_ventas');
-            $table->foreign('cuids_idcuids')->references('idcuids')->on('cuids');
+            $table->foreign('cuis_idcuis')->references('idcuis')->on('cuis');
         });
     }
 

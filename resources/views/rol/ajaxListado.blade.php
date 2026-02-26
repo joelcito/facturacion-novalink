@@ -4,7 +4,8 @@
         <thead>
             <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                 <th>Nombre</th>
-                <th>Actions</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody class="text-gray-600 fw-semibold">
@@ -45,7 +46,6 @@
             //  searching: true,
             responsive: true
         });
-
 
     });
 </script>
